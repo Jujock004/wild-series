@@ -20,3 +20,11 @@ app
   .on("error", (err: Error) => {
     console.error("Error:", err.message);
   });
+
+// Déclaration des routes
+import type { RequestHandler } from "express";
+
+const sayWelcome: RequestHandler = (req, res) => {
+  res.send("Welcome to Wild Series !");
+};
+app.get("/", sayWelcome);
