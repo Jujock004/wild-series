@@ -26,8 +26,9 @@ const programs = [
 // Declare the actions
 
 import type { RequestHandler } from "express";
+import programRepository from "./programRepository";
 
-const browse: RequestHandler = (req, res) => {
+const browse: RequestHandler = async (req, res) => {
   if (req.query.q != null) {
     const filteredPrograms = programs.filter((program) =>
       program.synopsis.includes(req.query.q as string),
@@ -35,7 +36,9 @@ const browse: RequestHandler = (req, res) => {
 
     res.json(filteredPrograms);
   } else {
-    res.json(programs);
+    const programsFromDB = await programRepository.readAll();
+
+    res.json(programsFromDB);
   }
 };
 
