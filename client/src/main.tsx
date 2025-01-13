@@ -7,6 +7,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
+import ProgramDetail from "./pages/ProgramDetail";
+import ProgramEdit from "./pages/ProgramEdit";
+import ProgramNew from "./pages/ProgramNew";
 import Programs from "./pages/Programs";
 
 // Import additional components for new routes
@@ -28,6 +31,18 @@ const router = createBrowserRouter([
   {
     path: "/programs",
     element: <Programs />,
+  },
+  {
+    path: "/programs/:id",
+    element: <ProgramDetail />,
+  },
+  {
+    path: "/programs/new",
+    element: <ProgramNew />,
+  },
+  {
+    path: "/programs/:id/edit",
+    element: <ProgramEdit />,
   },
 ]);
 
